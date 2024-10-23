@@ -13,6 +13,10 @@ $(obj): %.o: %.c
 	@mkdir -p `dirname out/$@`
 	@$(CC) -Wall -Werror -Iinclude $< -c -o out/$@
 
+format:
+	@find . -name "*.[ch]" -exec clang-format -i {} \;
+	@echo "make $@ done."
+
 clean:
 	@rm -rf out
 	@echo "make $@ done."
